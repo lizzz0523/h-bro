@@ -25,7 +25,8 @@ module.exports = {
     externals: [
         (function () {
             const IGNORES = [
-                'electron'
+                'electron',
+                'sqlite3'
             ]
 
             return function (context, request, callback) {

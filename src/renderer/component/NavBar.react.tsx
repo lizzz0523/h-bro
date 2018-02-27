@@ -5,6 +5,7 @@ import { KEYCODE_ENTER } from '../keyCode'
 interface INavBarProps {
     currentURL: string
     isURLFocus: boolean
+    searchVisited: (query: string) => void
     updateURL: (url: string) => void
     focus: () => void
     blur: () => void

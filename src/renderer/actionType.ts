@@ -30,3 +30,12 @@ export type FORWARD = typeof FORWARD
 
 export const BACKWARD = 'BACKWARD'
 export type BACKWARD = typeof BACKWARD
+
+export const ADD_VISITED = 'ADD_VISITED'
+export type ADD_VISITED = typeof ADD_VISITED
+
+export const REMOVE_VISITED = 'REMOVE_VISITED'
+export type REMOVE_VISITED = typeof REMOVE_VISITED
+
+export const SEARCH_VISITED = 'SEARCH_VISITED'
+export type SEARCH_VISITED = typeof SEARCH_VISITED

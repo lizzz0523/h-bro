@@ -1,3 +1,4 @@
+import { WebviewManager } from '../service/WebviewManager'
 import {
     SET_TAB, OPEN_TAB, CLOSE_TAB, SELECT_TAB,
     UPDATE_URL, FOCUS_ENTER, FOCUS_LEAVE,
@@ -136,6 +137,7 @@ export class ReloadAction implements IReloadAction {
     type: RELOAD = RELOAD
 
     constructor() {
+        WebviewManager.reload()
         return { type: this.type }
     }
 }
@@ -144,6 +146,7 @@ export class ForwardActoin implements IForwardAction {
     type: FORWARD = FORWARD
 
     constructor() {
+        WebviewManager.forward()
         return { type: this.type }
     }
 }
@@ -152,6 +155,7 @@ export class BackwardAction implements IBackwardAction {
     type: BACKWARD = BACKWARD
 
     constructor() {
+        WebviewManager.backward()
         return { type: this.type }
     }
 }

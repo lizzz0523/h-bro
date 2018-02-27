@@ -8,7 +8,7 @@ import { FocusEnterAction, FocusLeaveAction,
 import * as keyBinding from '../keyBinding'
 
 export class ShortcutManager {
-    static register(store: Store<IGlobalState>) {
+    static setup(store: Store<IGlobalState>) {
         /* tab shortcut */
         Mousetrap.bind(keyBinding.NEW_TAB, () => {
             store.dispatch(new OpenTabAction())

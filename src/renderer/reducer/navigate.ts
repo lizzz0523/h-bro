@@ -1,5 +1,4 @@
 import { ITabInfo, ITabData } from '../types'
-import { WebviewManager } from '../service/WebviewManager'
 import { CommonReducer, IReduce } from '../service/CommonReducer'
 import { INavigateAction, IOpenTabAction, ICloseTabAction, ISelectTabAction, ISetTabAction,
     IUpdateURLAction, IFocusEnterAction, IFocusLeaveAction, IWillNavigateAction,
@@ -213,17 +212,14 @@ export class NavigateReducer extends CommonReducer<INavigateState, INavigateActi
     }
 
     reload(state: INavigateState, action: IReloadAction): INavigateState {
-        WebviewManager.reload()
         return state
     }
 
     forward(state: INavigateState, action: IForwardAction): INavigateState {
-        WebviewManager.forward()
         return state
     }
 
     backward(state: INavigateState, action: IBackwardAction): INavigateState {
-        WebviewManager.backward()
         return state
     }
 }

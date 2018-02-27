@@ -9,3 +9,8 @@ export interface ITabData {
     tabs: ITabInfo[]
     currentTabId: number | undefined
 }
+
+export interface IVisited {
+    url: string
+    title: string
+}
