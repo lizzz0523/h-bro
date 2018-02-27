@@ -53,8 +53,10 @@ export class HistoryManager {
         })
     }
 
-    static removeAll(): void {
-        //
+    static removeAll(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            resolve()
+        })
     }
 
     static search(query?: string): Promise<IVisited[]> {

@@ -2375,7 +2375,9 @@ var HistoryManager = /** @class */ (function () {
         });
     };
     HistoryManager.removeAll = function () {
-        //
+        return new Promise(function (resolve, reject) {
+            resolve();
+        });
     };
     HistoryManager.search = function (query) {
         var db = HistoryManager.database;
@@ -22601,6 +22603,12 @@ var HistoryReducer = /** @class */ (function (_super) {
     __extends(HistoryReducer, _super);
     function HistoryReducer(initState) {
         var _this = _super.call(this, initState) || this;
+        _this.addVisited = function (state, action) {
+            return state;
+        };
+        _this.removeVisited = function (state, action) {
+            return state;
+        };
         _this.searchVisited = function (state, action) {
             var visited = action.payload;
             return redux_pack_1.handle(state, action, {
@@ -22609,15 +22617,9 @@ var HistoryReducer = /** @class */ (function (_super) {
                 }
             });
         };
-        _this.addVisited = function (state, action) {
-            return state;
-        };
-        _this.removeVisited = function (state, action) {
-            return state;
-        };
-        _this.bind(actionType_1.SEARCH_VISITED, _this.searchVisited);
         _this.bind(actionType_1.ADD_VISITED, _this.addVisited);
         _this.bind(actionType_1.REMOVE_VISITED, _this.removeVisited);
+        _this.bind(actionType_1.SEARCH_VISITED, _this.searchVisited);
         return _this;
     }
     HistoryReducer.prototype.bind = function (type, reduce) {

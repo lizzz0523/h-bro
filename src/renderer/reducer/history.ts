@@ -9,23 +9,31 @@ export interface IHistoryState {
 }
 
 export type IHistoryReduce =
-    IReduce<IHistoryState, ISearchVisitedAction> | IReduce<IHistoryState, IAddVisitedAction> |
-    IReduce<IHistoryState, IRemoveVisitedAction>
+    IReduce<IHistoryState, IAddVisitedAction> | IReduce<IHistoryState, IRemoveVisitedAction> |
+    IReduce<IHistoryState, ISearchVisitedAction>
 
 export class HistoryReducer extends CommonReducer<IHistoryState, IHistoryAction> {
     constructor(initState: IHistoryState) {
         super(initState)
 
-        this.bind(SEARCH_VISITED, this.searchVisited)
         this.bind(ADD_VISITED, this.addVisited)
         this.bind(REMOVE_VISITED, this.removeVisited)
+        this.bind(SEARCH_VISITED, this.searchVisited)
     }
 
-    bind(type: SEARCH_VISITED, reduce: IReduce<IHistoryState, ISearchVisitedAction>): void
     bind(type: ADD_VISITED, reduce: IReduce<IHistoryState, IAddVisitedAction>): void
     bind(type: REMOVE_VISITED, reduce: IReduce<IHistoryState, IRemoveVisitedAction>): void
+    bind(type: SEARCH_VISITED, reduce: IReduce<IHistoryState, ISearchVisitedAction>): void
     bind(type: string, reduce: IHistoryReduce): void {
         super.bind(type, reduce as IReduce<IHistoryState, IHistoryAction>)
+    }
+
+    addVisited = (state: IHistoryState, action: IAddVisitedAction) => {
+        return state
+    }
+
+    removeVisited = (state: IHistoryState, action: IRemoveVisitedAction) => {
+        return state
     }
 
     searchVisited = (state: IHistoryState, action: ISearchVisitedAction) => {
@@ -36,14 +44,6 @@ export class HistoryReducer extends CommonReducer<IHistoryState, IHistoryAction>
                 return { ...state, visited }
             }
         })
-    }
-
-    addVisited = (state: IHistoryState, action: IAddVisitedAction) => {
-        return state
-    }
-
-    removeVisited = (state: IHistoryState, action: IRemoveVisitedAction) => {
-        return state
     }
 }
 
