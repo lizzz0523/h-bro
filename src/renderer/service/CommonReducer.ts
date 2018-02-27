@@ -7,7 +7,7 @@ export interface IReduce<S, A> {
 }
 
 export class CommonReducer<S, A extends IAction> {
-    protected actions: { [type: string]: IReduce<S, A> } = {}
+    private actions: { [type: string]: IReduce<S, A> } = {}
     private initState: S
 
     constructor(initState: S) {
