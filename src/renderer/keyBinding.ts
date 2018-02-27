@@ -1,0 +1,8 @@
+export const NEW_TAB = 'n n'
+export const CLOSE_TAB = 'd d'
+export const PREV_TAB = 'shift+,'
+export const NEXT_TAB = 'shift+.'
+export const FOCUS = 'f f'
+export const RELOAD = 'alt+r'
+export const FORWARD = 'alt+f'
+export const BACKWARD = 'alt+b'

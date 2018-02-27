@@ -1,0 +1,235 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateX(-30%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+html, body, #root {
+    height: 100%;
+}
+body {
+    font-family: "Microsoft YaHei";
+    font-size: 15px;
+}
+body * {
+    box-sizing: border-box;
+}
+input {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+button {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+}
+.hide {
+    display: none;
+}
+.ml-8 {
+    margin-left: 8px;
+}
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.app-nav {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    padding: 8px;
+    background-color: #7496ed;
+    user-select: none;
+}
+.app-tabs {
+    position: relative;
+    display: flex;
+    background-color: #5376ce;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    user-select: none;
+}
+.app-panel {
+    flex: 1;
+}
+.nav {
+    display: block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: white;
+    transition: color .3s ease;
+}
+.nav:hover {
+    color: #4769be;
+}
+.url {
+    flex: 1;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.url input {
+    display: block;
+    padding: 0 8px;
+    width: 100%;
+    line-height: 32px;
+}
+.tabs {
+    display: flex;
+    flex: 1;
+    color: white;
+    font-size: 14px;
+}
+.tabs li {
+    position: relative;
+    display: inline-flex;
+    flex: 1;
+    align-items: center;
+    padding: 4px 32px;
+    padding-left: 8px;
+    line-height: 32px;
+    max-width: 300px;
+    vertical-align: top;
+    cursor: default;
+    white-space: nowrap;
+}
+.tabs li span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tabs_close {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    transition: color .3s ease;
+}
+.tabs_close:hover {
+    color: #4769be;
+}
+.tabs_current {
+    background-color: #7496ed;
+}
+.tabs_title {
+    flex: 1;
+}
+.tabs_favicon {
+    margin-right: 8px;
+    height: 15px;
+    width: 15px;
+    background-size: cover;
+    animation: fadein 0.3s ease
+}
+.tabs-add {
+    position: relative;
+    padding: 0;
+    transition: background-color .3s ease;
+}
+.tabs-add:hover {
+    background-color: #4769be;
+}
+.tabs-add button {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 40px;
+    height: 32px;
+}
+.tabs-add:before,
+.tabs-add:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    margin-top: -2px;
+    margin-left: -8px;
+    width: 16px;
+    height: 4px;
+    background-color: #24438f;
+}
+.tabs-add:after {
+    transform: rotate(90deg);
+}
+.webviews,
+.webviews li {
+    height: 100%;
+}
+.webviews {
+    position: relative;
+}
+.webviews li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.webviews_hidden {
+    visibility: hidden;
+}
+.webview {
+    position: relative;
+    height: 100%;
+}
+.webview webview {
+    display: flex;
+    height: 100%;
+}

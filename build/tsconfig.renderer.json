@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["es6", "dom"],
+        "jsx": "react"
+    },
+    "include": [
+        "../src/renderer/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

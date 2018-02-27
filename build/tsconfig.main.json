@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "../dist/main",
+        "baseUrl": "../",
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "src/types/*"
+            ]
+        }
+    },
+    "include": [
+        "../src/main/**/*"
+    ]
+}
