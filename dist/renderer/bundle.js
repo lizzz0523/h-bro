@@ -21470,7 +21470,7 @@ var TabList = /** @class */ (function (_super) {
                 return (React.createElement("li", { className: tabCurrent, key: tab.id, onClick: function () { return _this.props.selectTab(tab.id); } },
                     React.createElement("span", { className: tabFavicon, style: favicon }),
                     React.createElement("span", { className: "tabs_title" }, tab.title),
-                    React.createElement("i", { className: "tabs_close fa fa-times", onClick: function (e) { return (stop(e), _this.props.closeTab(tab.id)); } })));
+                    React.createElement("i", { className: "tabs_close fa fa-times", onClick: function (ev) { return (stop(ev), _this.props.closeTab(tab.id)); } })));
             })),
             React.createElement("div", { className: "tabs-add" },
                 React.createElement("button", { onClick: function () { return _this.props.openTab(); } }))));
@@ -21684,9 +21684,6 @@ var NavBar = /** @class */ (function (_super) {
         _this.isEnter = function (keyCode) {
             return keyCode === keyCode_1.KEYCODE_ENTER;
         };
-        _this.handleInput = function (event) {
-            _this.props.updateURL(event.target.value);
-        };
         _this.handleKeyboard = function (event) {
             if (_this.isEnter(event.keyCode) && _this.isReady()) {
                 _this.props.navigate();
@@ -21712,7 +21709,7 @@ var NavBar = /** @class */ (function (_super) {
             React.createElement("span", { className: "nav", onClick: function () { return _this.props.reload(); } },
                 React.createElement("i", { className: "fa fa-refresh" })),
             React.createElement("div", { className: "url ml-8" },
-                React.createElement("input", { ref: function (el) { return _this.input = el; }, value: this.props.currentURL, onChange: this.handleInput, onKeyDown: this.handleKeyboard, onFocus: function () { return _this.props.focus(); }, onBlur: function () { return _this.props.blur(); } }))));
+                React.createElement("input", { ref: function (el) { return _this.input = el; }, value: this.props.currentURL, onKeyDown: this.handleKeyboard, onChange: function (ev) { return _this.props.updateURL(ev.target.value); }, onFocus: function () { return _this.props.focus(); }, onBlur: function () { return _this.props.blur(); } }))));
     };
     return NavBar;
 }(React.Component));

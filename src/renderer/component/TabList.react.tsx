@@ -34,7 +34,7 @@ export class TabList extends React.Component<ITabListProps> {
                                     <span className="tabs_title">{tab.title}</span>
                                     <i
                                         className="tabs_close fa fa-times"
-                                        onClick={(e) => (stop(e), this.props.closeTab(tab.id))}
+                                        onClick={(ev) => (stop(ev), this.props.closeTab(tab.id))}
                                     />
                                 </li>
                             )

@@ -7,8 +7,7 @@ import { INavigateAction, IOpenTabAction, ICloseTabAction, ISelectTabAction, ISe
 import {
     SET_TAB, OPEN_TAB, CLOSE_TAB, SELECT_TAB,
     UPDATE_URL, FOCUS_ENTER, FOCUS_LEAVE,
-    RELOAD, FORWARD, BACKWARD, NAVIGATE
-} from '../actionType'
+    RELOAD, FORWARD, BACKWARD, NAVIGATE } from '../actionType'
 
 export interface INavigateState extends ITabData {
     isURLFocus: boolean

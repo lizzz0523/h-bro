@@ -41,8 +41,8 @@ export class NavBar extends React.Component<INavBarProps> {
                     <input
                         ref={(el) => this.input = el}
                         value={this.props.currentURL}
-                        onChange={this.handleInput}
                         onKeyDown={this.handleKeyboard}
+                        onChange={(ev) => this.props.updateURL(ev.target.value)}
                         onFocus={() => this.props.focus()}
                         onBlur={() => this.props.blur()}
                     />
@@ -57,10 +57,6 @@ export class NavBar extends React.Component<INavBarProps> {
 
     isEnter = (keyCode: number): boolean => {
         return keyCode === KEYCODE_ENTER
-    }
-
-    handleInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        this.props.updateURL(event.target.value)
     }
 
     handleKeyboard = (event: React.KeyboardEvent<HTMLInputElement>): void => {
