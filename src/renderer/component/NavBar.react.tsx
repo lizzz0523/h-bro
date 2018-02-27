@@ -51,7 +51,7 @@ export class NavBar extends React.Component<INavBarProps> {
         )
     }
 
-    isReady = (): boolean => {
+    isURLReady = (): boolean => {
         return this.props.currentURL !== ''
     }
 
@@ -60,7 +60,7 @@ export class NavBar extends React.Component<INavBarProps> {
     }
 
     handleKeyboard = (event: React.KeyboardEvent<HTMLInputElement>): void => {
-        if (this.isEnter(event.keyCode) && this.isReady()) {
+        if (this.isEnter(event.keyCode) && this.isURLReady()) {
             this.props.navigate()
         }
     }

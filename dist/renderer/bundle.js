@@ -21599,17 +21599,20 @@ var WebView = /** @class */ (function (_super) {
         this.webview.addEventListener('page-favicon-updated', function (event) {
             _this.props.onFaviconChange(event.favicons[0]);
         });
+        // 当前webview激活状态，马上注册到WebviewManager中
         if (this.props.active) {
             WebviewManager_1.WebviewManager.register(this.webview);
         }
     };
     WebView.prototype.componentWillUnmount = function () {
+        // 当前tab被关闭，在webview销毁前，从WebviewManager中释放
         if (this.webview) {
             WebviewManager_1.WebviewManager.unregister(this.webview);
         }
     };
     WebView.prototype.componentWillReceiveProps = function (props) {
-        if (props.active && this.webview) {
+        // 当前webview被重新激活，马上注册到WebviewManager中
+        if (this.webview && props.active) {
             WebviewManager_1.WebviewManager.register(this.webview);
         }
     };
@@ -21678,14 +21681,14 @@ var NavBar = /** @class */ (function (_super) {
     function NavBar() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.input = null;
-        _this.isReady = function () {
+        _this.isURLReady = function () {
             return _this.props.currentURL !== '';
         };
         _this.isEnter = function (keyCode) {
             return keyCode === keyCode_1.KEYCODE_ENTER;
         };
         _this.handleKeyboard = function (event) {
-            if (_this.isEnter(event.keyCode) && _this.isReady()) {
+            if (_this.isEnter(event.keyCode) && _this.isURLReady()) {
                 _this.props.navigate();
             }
         };

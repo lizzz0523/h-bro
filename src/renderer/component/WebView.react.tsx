@@ -43,19 +43,22 @@ export class WebView extends React.Component<IWebViewProps> {
             this.props.onFaviconChange(event.favicons[0])
         })
 
+        // 当前webview激活状态，马上注册到WebviewManager中
         if (this.props.active) {
             WebviewManager.register(this.webview)
         }
     }
 
     componentWillUnmount() {
+        // 当前tab被关闭，在webview销毁前，从WebviewManager中释放
         if (this.webview) {
             WebviewManager.unregister(this.webview)
         }
     }
 
     componentWillReceiveProps(props: IWebViewProps) {
-        if (props.active && this.webview) {
+        // 当前webview被重新激活，马上注册到WebviewManager中
+        if (this.webview && props.active) {
             WebviewManager.register(this.webview)
         }
     }
