@@ -31,6 +31,7 @@ export class TabPanel extends React.Component<ITabPanelProps> {
                                         
                                         src={tab.url}
                                         onOpen={(url) => this.props.openTab(url)}
+                                        onLoaded={(url, title) => this.props.addVisited(url, title)}
                                         onURLChange={(url) => this.props.updateTabURL(tab.id, url)}
                                         onTitleChange={(title) => this.props.updateTabTitle(tab.id, title)}
                                         onFaviconChange={(favicon) => this.props.updateTabFavicon(tab.id, favicon)}

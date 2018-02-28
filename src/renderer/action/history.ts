@@ -21,15 +21,15 @@ export interface ISearchVisitedPeddingAction {
     type: SEARCH_VISITED_PEDDING
 }
 
+export interface ISearchVisitedRejectedAction {
+    type: SEARCH_VISITED_REJECTED
+    error: Error
+}
+
 export interface ISearchVisitedResolvedAction {
     type: SEARCH_VISITED_RESOLVED
     query: string
     visited: IVisited[]
-}
-
-export interface ISearchVisitedRejectedAction {
-    type: SEARCH_VISITED_REJECTED
-    error: Error
 }
 
 export interface IClearVisitedAction {
@@ -39,6 +39,7 @@ export interface IClearVisitedAction {
 export type IHistoryAction = IAddVisitedAction | IRemoveVisitedAction | ISearchVisitedAction |
     ISearchVisitedPeddingAction | ISearchVisitedResolvedAction | ISearchVisitedRejectedAction
 
+// 把当前浏览的页面信息，加入到数据库
 export class AddVisitedAction implements IAddVisitedAction {
     type: ADD_VISITED = ADD_VISITED
 
@@ -48,6 +49,7 @@ export class AddVisitedAction implements IAddVisitedAction {
     }
 }
 
+// 从数据库中删除某个url对应的页面信息
 export class RemoveVisitedAction implements IRemoveVisitedAction {
     type: REMOVE_VISITED = REMOVE_VISITED
 
@@ -57,6 +59,7 @@ export class RemoveVisitedAction implements IRemoveVisitedAction {
     }
 }
 
+// 从数据库中搜索url与某个字符串匹配的所有页面信息
 export class SearchVisitedAction implements ISearchVisitedAction {
     type: SEARCH_VISITED = SEARCH_VISITED
     visited: Promise<IVisited[]>
@@ -67,6 +70,7 @@ export class SearchVisitedAction implements ISearchVisitedAction {
     }
 }
 
+// 把已经搜索到的页面信息清除掉
 export class ClearVisitedAction implements IClearVisitedAction {
     type: CLEAR_VISITED = CLEAR_VISITED
     

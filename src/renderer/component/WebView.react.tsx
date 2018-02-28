@@ -6,6 +6,7 @@ interface IWebViewProps {
     src: string
     active: boolean
     onOpen: (url: string) => void
+    onLoaded: (url: string, title: string) => void
     onURLChange: (title: string) => void
     onTitleChange: (title: string) => void
     onFaviconChange: (title: string) => void
@@ -41,6 +42,14 @@ export class WebView extends React.Component<IWebViewProps> {
 
         this.webview.addEventListener('page-favicon-updated', (event) => {
             this.props.onFaviconChange(event.favicons[0])
+        })
+
+        this.webview.addEventListener('did-finish-load', (event) => {
+            if (!this.webview) {
+                return
+            }
+            
+            this.props.onLoaded(this.webview.getURL(), this.webview.getTitle())
         })
 
         // 当前webview激活状态，马上注册到WebviewManager中

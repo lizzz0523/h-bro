@@ -18,14 +18,14 @@ function mapStateToProps(state: IGlobalState) {
 
 function mapDispatchToProps(dispatch: Dispatch<INavigateAction | IHistoryAction>) {
     return {
-        searchVisited: (query: string) => { dispatch(new SearchVisitedAction(query)) },
         updateURL: (url: string) => { dispatch(new UpdateURLAction(url)) },
         focus: () => { dispatch(new FocusEnterAction() )},
         blur: () => { dispatch(new FocusLeaveAction() )},
         reload: () => { dispatch(new ReloadAction() )},
         forward: () => { dispatch(new ForwardActoin() )},
         backward: () => { dispatch(new BackwardAction() )},
-        navigate: () => { dispatch(new WillNavigateAction() )}
+        navigate: () => { dispatch(new WillNavigateAction() )},
+        searchVisited: (query: string) => { dispatch(new SearchVisitedAction(query)) }
     }
 }
 

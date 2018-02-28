@@ -133,6 +133,7 @@ export class WillNavigateAction implements IWillNavigateAction {
     }
 }
 
+// 刷新页面
 export class ReloadAction implements IReloadAction {
     type: RELOAD = RELOAD
 
@@ -142,6 +143,7 @@ export class ReloadAction implements IReloadAction {
     }
 }
 
+// 前进到下一个页面
 export class ForwardActoin implements IForwardAction {
     type: FORWARD = FORWARD
 
@@ -151,6 +153,7 @@ export class ForwardActoin implements IForwardAction {
     }
 }
 
+// 回退到上一个页面
 export class BackwardAction implements IBackwardAction {
     type: BACKWARD = BACKWARD
 
