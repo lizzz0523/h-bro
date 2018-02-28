@@ -28,7 +28,7 @@ export class WebView extends React.Component<IWebViewProps> {
         })
 
         this.webview.addEventListener('did-navigate', (event) => {
-            this.props.onURLChange(event .url)
+            this.props.onURLChange(event.url)
         })
         
         this.webview.addEventListener('did-navigate-in-page', (event) => {

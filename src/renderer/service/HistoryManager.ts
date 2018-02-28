@@ -1,4 +1,6 @@
 import { Database } from 'sqlite3'
+import { Store } from 'redux'
+import { IGlobalState } from '../reducer'
 import { IVisited } from '../types'
 
 export class HistoryManager {
@@ -12,7 +14,7 @@ export class HistoryManager {
         }
     }
 
-    static setup() {
+    static setup(store: Store<IGlobalState>) {
         const { database: db } = HistoryManager
         const sql = `
             CREATE TABLE IF NOT EXISTS visit (

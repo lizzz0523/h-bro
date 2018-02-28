@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { middleware as reduxPackMiddleware } from 'redux-pack'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware  } from 'redux'
 
@@ -9,8 +8,9 @@ import { App } from './component/App.react'
 import { reducers } from './reducer'
 import { ShortcutManager } from './service/ShortcutManager'
 import { HistoryManager } from './service/HistoryManager'
+import { asyncMiddleware } from './middleware/asyncMiddleware'
 
-const store = createStore(reducers, applyMiddleware(reduxPackMiddleware))
+const store = createStore(reducers, applyMiddleware(asyncMiddleware))
 
 ReactDOM.render(
     (
@@ -22,4 +22,4 @@ ReactDOM.render(
 )
 
 ShortcutManager.setup(store)
-HistoryManager.setup()
+HistoryManager.setup(store)

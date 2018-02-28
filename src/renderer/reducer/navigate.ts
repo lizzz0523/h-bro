@@ -1,12 +1,10 @@
 import { ITabInfo, ITabData } from '../types'
 import { CommonReducer, IReduce } from '../service/CommonReducer'
 import { INavigateAction, IOpenTabAction, ICloseTabAction, ISelectTabAction, ISetTabAction,
-    IUpdateURLAction, IFocusEnterAction, IFocusLeaveAction, IWillNavigateAction,
-    IReloadAction, IForwardAction, IBackwardAction } from '../action/navigate'
+    IUpdateURLAction, IFocusEnterAction, IFocusLeaveAction, IWillNavigateAction } from '../action/navigate'
 import {
     SET_TAB, OPEN_TAB, CLOSE_TAB, SELECT_TAB,
-    UPDATE_URL, FOCUS_ENTER, FOCUS_LEAVE,
-    RELOAD, FORWARD, BACKWARD, NAVIGATE } from '../actionType'
+    UPDATE_URL, FOCUS_ENTER, FOCUS_LEAVE, NAVIGATE } from '../actionType'
 
 export interface INavigateState extends ITabData {
     isURLFocus: boolean
@@ -17,9 +15,7 @@ export type INavigateReduce =
     IReduce<INavigateState, IOpenTabAction> | IReduce<INavigateState, ICloseTabAction> |
     IReduce<INavigateState, ISelectTabAction> | IReduce<INavigateState, ISetTabAction> |
     IReduce<INavigateState, IUpdateURLAction> | IReduce<INavigateState, IFocusEnterAction> |
-    IReduce<INavigateState, IFocusLeaveAction> | IReduce<INavigateState, IWillNavigateAction> |
-    IReduce<INavigateState, IReloadAction> | IReduce<INavigateState, IForwardAction> |
-    IReduce<INavigateState, IBackwardAction>
+    IReduce<INavigateState, IFocusLeaveAction> | IReduce<INavigateState, IWillNavigateAction>
 
 export class NavigateReducer extends CommonReducer<INavigateState, INavigateAction> {
     private static TAB_ID: number = 1
@@ -117,9 +113,6 @@ export class NavigateReducer extends CommonReducer<INavigateState, INavigateActi
         this.bind(FOCUS_ENTER, this.focusEnter)
         this.bind(FOCUS_LEAVE, this.focusLeave)
         this.bind(NAVIGATE, this.navigate)
-        this.bind(RELOAD, this.reload)
-        this.bind(FORWARD, this.forward)
-        this.bind(BACKWARD, this.backward)
     }
 
     bind(type: OPEN_TAB, reduce: IReduce<INavigateState, IOpenTabAction>): void
@@ -130,9 +123,6 @@ export class NavigateReducer extends CommonReducer<INavigateState, INavigateActi
     bind(type: FOCUS_ENTER, reduce: IReduce<INavigateState, IFocusEnterAction>): void
     bind(type: FOCUS_LEAVE, reduce: IReduce<INavigateState, IFocusLeaveAction>): void
     bind(type: NAVIGATE, reduce: IReduce<INavigateState, IWillNavigateAction>): void
-    bind(type: RELOAD, reduce: IReduce<INavigateState, IReloadAction>): void
-    bind(type: FORWARD, reduce: IReduce<INavigateState, IForwardAction>): void
-    bind(type: BACKWARD, reduce: IReduce<INavigateState, IBackwardAction>): void
     bind(type: string, reduce: INavigateReduce): void {
         super.bind(type, reduce as IReduce<INavigateState, INavigateAction>)
     }
@@ -209,18 +199,6 @@ export class NavigateReducer extends CommonReducer<INavigateState, INavigateActi
                 currentURL: url
             }
         }
-    }
-
-    reload(state: INavigateState, action: IReloadAction): INavigateState {
-        return state
-    }
-
-    forward(state: INavigateState, action: IForwardAction): INavigateState {
-        return state
-    }
-
-    backward(state: INavigateState, action: IBackwardAction): INavigateState {
-        return state
     }
 }
 

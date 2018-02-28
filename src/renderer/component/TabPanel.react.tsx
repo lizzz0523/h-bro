@@ -8,6 +8,7 @@ interface ITabPanelProps extends ITabData {
     updateTabURL: (id: number, url: string) => void
     updateTabTitle: (id: number, title: string) => void
     updateTabFavicon: (id: number, favicon: string) => void
+    addVisited: (url: string, title: string) => void
 }
 
 export class TabPanel extends React.Component<ITabPanelProps> {

@@ -1,12 +1,10 @@
-export interface IAction {
-    type: string
-}
+import { Action, AnyAction } from 'redux'
 
-export interface IReduce<S, A> {
+export interface IReduce<S, A extends Action = AnyAction> {
     (state: S, action: A): S
 }
 
-export class CommonReducer<S, A extends IAction> {
+export class CommonReducer<S, A extends Action = AnyAction> {
     private actions: { [type: string]: IReduce<S, A> } = {}
     private initState: S
 
