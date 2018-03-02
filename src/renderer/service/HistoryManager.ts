@@ -2,7 +2,7 @@ import * as rpc from 'pauls-electron-rpc'
 import { Store } from 'redux'
 import { IGlobalState } from '../reducer'
 import { IVisited } from '../types'
-import { historyManifest } from '../../manifest'
+import { historyManifest } from '../../main/manifest'
 
 export class HistoryManager {
     static api: any

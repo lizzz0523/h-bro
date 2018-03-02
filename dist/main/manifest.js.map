@@ -1,1 +1,1 @@
-{"version":3,"file":"manifest.js","sourceRoot":"","sources":["../../src/manifest.ts"],"names":[],"mappings":";;AAAa,QAAA,eAAe,GAAG;IAC3B,MAAM,EAAE,SAAS;IACjB,MAAM,EAAE,SAAS;IACjB,SAAS,EAAE,SAAS;IACpB,MAAM,EAAE,SAAS;CACpB,CAAA"}
+{"version":3,"file":"manifest.js","sourceRoot":"","sources":["../../src/main/manifest.ts"],"names":[],"mappings":";;AAAa,QAAA,eAAe,GAAG;IAC3B,MAAM,EAAE,SAAS;IACjB,MAAM,EAAE,SAAS;IACjB,SAAS,EAAE,SAAS;IACpB,MAAM,EAAE,SAAS;CACpB,CAAA"}

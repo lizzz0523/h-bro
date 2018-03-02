@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sqlite3_1 = require("sqlite3");
 const rpc = require("pauls-electron-rpc");
-const manifest_1 = require("../manifest");
+const manifest_1 = require("./manifest");
 class HistoryManager {
     static destroy() {
         HistoryManager.database.close();

@@ -1,6 +1,6 @@
 import { Database } from 'sqlite3'
 import * as rpc from 'pauls-electron-rpc'
-import { historyManifest } from '../manifest'
+import { historyManifest } from './manifest'
 
 export class HistoryManager {
     static database = new Database(':memory:')
