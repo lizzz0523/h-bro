@@ -37,11 +37,11 @@ export class HistoryManager {
         const { database: db } = HistoryManager
 
         return new Promise((resolve, reject) => {
-            db.get('SELECT num_visited FORM visit WHERE url=?;', [url], (err, row) => {
+            db.get('SELECT num_visited FROM visit WHERE url=?;', [url], (err, row) => {
                 if (!row) {
                     const numVisited = 1
                     
-                    db.run('INSERT INTO visit (url, title, num_visited) VALUES (?, ?);', [url, title, numVisited], () => {
+                    db.run('INSERT INTO visit (url, title, num_visited) VALUES (?, ?, ?);', [url, title, numVisited], () => {
                         resolve()
                     })
                 } else {
@@ -72,13 +72,13 @@ export class HistoryManager {
 
         return new Promise((resolve, reject) => {
             const sql = `
-                SELECT url, title, num_visited FORM visit
-                WHERE visit MATCH ?
-                ORDER BY visit.num_visited DESC
+                SELECT url, title, num_visited FROM visit
+                WHERE url LIKE ?
+                ORDER BY num_visited DESC
                 LIMIT 10;
             `
 
-            db.all(sql, [query], (err, rows) => {
+            db.all(sql, [`%${query}%`], (err, rows = []) => {
                 return rows.map(({ url, title }) => {
                     return { url, title }
                 })
