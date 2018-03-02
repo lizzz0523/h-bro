@@ -46,7 +46,7 @@ export class NavBar extends React.Component<INavBarProps> {
                         ref={(el) => this.input = el}
                         value={this.props.currentURL}
                         onKeyDown={this.handleKeyboard}
-                        onChange={(ev) => this.handleInput}
+                        onChange={this.handleInput}
                         onFocus={() => this.props.focus()}
                         onBlur={() => this.props.blur()}
                     />

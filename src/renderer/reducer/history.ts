@@ -26,12 +26,12 @@ export class HistoryReducer extends CommonReducer<IHistoryState, IHistoryAction>
         super.bind(type, reduce as IReduce<IHistoryState, IHistoryAction>)
     }
 
-    searchVisited = (state: IHistoryState, action: ISearchVisitedResolvedAction) => {
+    searchVisited = (state: IHistoryState, action: ISearchVisitedResolvedAction): IHistoryState => {
         return { ...state, visited: action.visited }
     }
 
-    clearVisited = (state: IHistoryState, action: IClearVisitedAction) => {
-        return { ...state, visited: [] as IVisited[] }
+    clearVisited = (state: IHistoryState, action: IClearVisitedAction): IHistoryState => {
+        return { ...state, visited: [] }
     }
 }
 

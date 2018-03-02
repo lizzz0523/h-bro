@@ -159,26 +159,18 @@ export class NavigateReducer extends CommonReducer<INavigateState, INavigateActi
     }
 
     updateURL = (state: INavigateState, action: IUpdateURLAction): INavigateState => {
-        return {
-            ...state,
-            currentURL: action.url
-        }
+        // 用户输入
+        return { ...state, currentURL: action.url }
     }
 
     focusEnter = (state: INavigateState): INavigateState => {
         // 获得焦点
-        return {
-            ...state,
-            isURLFocus: true
-        }
+        return { ...state, isURLFocus: true }
     }
 
     focusLeave = (state: INavigateState): INavigateState => {
         // 失去焦点
-        return {
-            ...state,
-            isURLFocus: false
-        }
+        return { ...state, isURLFocus: false }
     }
 
     navigate = (state: INavigateState): INavigateState => {
@@ -187,17 +179,13 @@ export class NavigateReducer extends CommonReducer<INavigateState, INavigateActi
         const url = urlComplete ? state.currentURL : `http://${ state.currentURL }`
         
         if (state.currentTabId) {
-            return {
-                ...state,
-                ...NavigateReducer.setTab(state, state.currentTabId, 'url', url),
-                currentURL: url
-            }
+            const { tabs, currentTabId } = NavigateReducer.setTab(state, state.currentTabId, 'url', url)
+
+            return { ...state, tabs, currentTabId, currentURL: url }
         } else {
-            return {
-                ...state,
-                ...NavigateReducer.openTab(state, url),
-                currentURL: url
-            }
+            const { tabs, currentTabId } = NavigateReducer.openTab(state, url)
+
+            return { ...state, tabs, currentTabId, currentURL: url }
         }
     }
 }
